@@ -1,11 +1,12 @@
 <div class="search-container">
-    <form class="search-form">
+    <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
         <!-- From Uiverse.io by 0xnihilism --> 
         <div class="pokemon-search-container">
             <input
                 placeholder="TYPE HERE"
                 class="pokemon-input smooth-type"
                 type="text"
+                formControlName="name"
             />
             <label class="pokemon-search-label">SEARCH A POKEMON</label>
         </div>
@@ -13,4 +14,7 @@
             <img src="/images/pokeball.png" alt="pokeball" class="search-image">
         </button>
     </form>
+    @if (showCard) {
+        <app-card [name]="pokemonName" [sprite]="sprite"></app-card>
+    }
 </div>
