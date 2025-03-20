@@ -64,17 +64,4 @@ export class SearchComponent {
 
 }
 
-/*
-   onSubmit() {
-    this.showCard = true; // show the pokemon card when the form is submitted
-    const name = this.searchForm.value.name?.toLowerCase();
-    console.log(name);
-    this.http
-      .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .subscribe((result: any) => {
-        console.log(result);
-        this.pokemonName = result.name;
-        this.sprite = result.sprites.front_default;
-      })
-  }
- */
+

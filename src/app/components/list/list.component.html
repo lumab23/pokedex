@@ -1,1 +1,18 @@
-<p>list works!</p>
+<div class="pokemon-list">
+  <app-card
+    *ngFor="let pokemon of pokemons"
+    [name]="pokemon.name"
+    [sprite]="pokemon.sprite"
+    [hp]="pokemon.hp"
+    [type]="pokemon.type"
+    [abilities]="pokemon.abilities"
+    [moves]="pokemon.moves"
+  ></app-card>
+</div>
+  
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️</button>
+  <span>Página {{ currentPage }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage * perPage >= totalPokemons">➡️</button>
+</div>
+  
