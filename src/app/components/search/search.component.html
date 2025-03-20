@@ -14,7 +14,22 @@
             <img src="/images/pokeball.png" alt="pokeball" class="search-image">
         </button>
     </form>
-    @if (showCard) {
-        <app-card [name]="pokemonName" [sprite]="sprite"></app-card>
+
+    <!-- Error Message -->
+    @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
     }
+
+    <div class="card-container">
+        @if (showCard) {
+            <app-card 
+                [name]="pokemonName" 
+                [sprite]="sprite"
+                [hp]="hp"
+                [type]="type"
+                [abilities]="abilities"
+                [moves]="moves"
+            ></app-card>
+        }
+    </div>
 </div>

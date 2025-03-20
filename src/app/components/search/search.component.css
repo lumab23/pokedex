@@ -8,10 +8,17 @@
 
 
 .search-form{
-    grid-row: 2;
+    grid-row: 1;
     margin-top: 20px;
     display: flex;
     align-items: center;
+}
+
+.card-container {
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 /* From Uiverse.io by 0xnihilism */ 

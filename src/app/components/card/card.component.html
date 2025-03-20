@@ -1,3 +1,31 @@
-<p>{{ name }}</p>
-<img [src]="sprite" alt="sprite">
+<div class="pokemon-card">
+  <!-- header -->
+    <div class="card-header">
+      <p class="pokemon-name">{{ name }}</p>
+      <p class="pokemon-hp">HP: {{ hp }}</p>
+    </div>
 
+    <!-- imagem -->
+    <div class="card-image">
+      <img class="pokemon-sprite" [src]="sprite" alt="pokemon img">
+      <p class="pokemon-type">Type: {{ type }}</p>
+    </div>
+
+    <!-- habilidades -->
+  <div class="abilities">
+    <h3>Abilities</h3>
+    <ul>
+      <li *ngFor="let ability of abilities">{{ ability }}</li>
+    </ul>
+  </div>
+
+  <!-- moves -->
+  <div class="moves">
+    <h3>Moves</h3>
+    <ul>
+      <li *ngFor="let move of moves">{{ move }}</li>
+    </ul>
+  </div>
+
+  </div>
+  
