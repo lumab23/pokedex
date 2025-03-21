@@ -11,6 +11,17 @@
     position: relative;
 }
 
+.pokemon-id {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
 .pokemon-card:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
@@ -54,11 +65,26 @@
     margin-top: 10px;
 }
 
-.pokemon-type {
-    font-size: 10px;
-    color: #fff;
+.pokemon-types {
+    display: flex;
+    justify-content: space-around;
     margin-top: 10px;
     font-weight: bold;
+    border-radius: 10px;
+    height: 20px;
+}
+
+.pokemon-type {
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-transform: capitalize;
+    min-width: 50px;
+    text-align: center;
 }
 
 .abilities,

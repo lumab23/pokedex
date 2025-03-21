@@ -18,12 +18,17 @@ export class ListComponent {
   currentPage = 1;
   perPage = 20;
   totalPokemons = 0;
+  searchQuery = "";
+  isSearching = false;
 
   ngOnInit() {
     this.fetchPokemons();
   }
 
   fetchPokemons() {
+
+    if (this.isSearching) return;
+
     const offset = (this.currentPage - 1) * this.perPage;
     this.http.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${this.perPage}`)
       .subscribe((response: any) => {
@@ -36,15 +41,17 @@ export class ListComponent {
           abilities: [],
           moves: []
         }));
+
         console.log("lista de pokemons: ", this.pokemons);
 
         this.totalPokemons = response.count;
 
         this.pokemons.forEach((pokemon, index) => {
           this.http.get(pokemon.url).subscribe((details: any) => {
+            this.pokemons[index].id = details.id;
             this.pokemons[index].sprite = details.sprites.front_default;
             this.pokemons[index].hp = details.stats[0].base_stat;
-            this.pokemons[index].type = details.types[0].type.name;
+            this.pokemons[index].type = details.types.map((t: any) => t.type.name);
             this.pokemons[index].abilities = details.abilities.map(
               (ability: any) => ability.ability.name
             );
@@ -55,6 +62,8 @@ export class ListComponent {
         });
       });
   }
+
+  
 
   nextPage() {
     if (this.currentPage * this.perPage < this.totalPokemons) {

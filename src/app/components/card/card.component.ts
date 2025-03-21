@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
+  @Input() id = 0;
   @Input() name = "";
   @Input() sprite = "";
   @Input() hp = 0;

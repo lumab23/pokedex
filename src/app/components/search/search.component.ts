@@ -19,6 +19,7 @@ export class SearchComponent {
   private http = inject(HttpClient);
 
   showCard = false;
+  id = 0;
   pokemonName = "";
   sprite = "";
   hp = 0;
@@ -37,21 +38,26 @@ export class SearchComponent {
     if (name) {
       this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`).subscribe({
         next: (result: any) => {
-          this.showCard = true;
           this.errorMessage = "";
-
+          
+          this.id = result.id;
           this.pokemonName = result.name;
           this.sprite = result.sprites.front_default;
           this.hp = result.stats[0].base_stat;
-          this.type = result.types[0].type.name;
-
+          this.type = result.types.map((t: any) => t.type.name);
+          
           this.abilities = result.abilities.map(
             (ability: any) => ability.ability.name
           );
-
+          
           this.moves = result.moves
-            .slice(0, 5)
-            .map((move: any) => move.move.name);
+          .slice(0, 5)
+          .map((move: any) => move.move.name);
+
+          // mostrar o card apenas após o carregamento dos dados 
+          setTimeout(() => {
+            this.showCard = true;
+          }, 100)
         },
         error: (err) => {
           this.showCard = false;

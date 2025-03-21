@@ -1,15 +1,19 @@
 <div class="pokemon-card">
-  <!-- header -->
-    <div class="card-header">
-      <p class="pokemon-name">{{ name }}</p>
-      <p class="pokemon-hp">HP: {{ hp }}</p>
-    </div>
+<!-- header -->
+  <div class="card-header">
+    <h2 class="pokemon-id">#{{ id }}</h2>
+    <p class="pokemon-name">{{ name }}</p>
+    <p class="pokemon-hp">HP: {{ hp }}</p>
+  </div>
 
-    <!-- imagem -->
-    <div class="card-image">
-      <img class="pokemon-sprite" [src]="sprite" alt="pokemon img">
-      <p class="pokemon-type">Type: {{ type }}</p>
-    </div>
+  <!-- imagem -->
+  <div class="card-image">
+    <img class="pokemon-sprite" [src]="sprite" alt="pokemon img">
+  </div>
+
+  <div class="pokemon-types">
+    <span *ngFor="let t of type" class="pokemon-type">{{ t }}</span>
+  </div>
 
     <!-- habilidades -->
   <div class="abilities">
@@ -27,5 +31,4 @@
     </ul>
   </div>
 
-  </div>
-  
+</div>
