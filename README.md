@@ -1,59 +1,63 @@
-# Pokeng
+# Pokédex Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+A Pokédex application built with Angular, leveraging the PokéAPI to display Pokémon details including their stats, abilities, and moves.
 
-## Development server
+## Features
+- **List View:** Displays a paginated list of Pokémon.
+- **Search Functionality:** Allows users to search for Pokémon by name.
+- **Detailed View:** Shows detailed information about a selected Pokémon.
+- **Responsive Design:** Optimized for different screen sizes.
 
-To start a local development server, run:
+## Technologies Used
+- **Angular**: Component-based UI development
+- **TypeScript**: Strongly typed JavaScript
+- **PokéAPI**: Fetching Pokémon data
+- **CSS**: Styling for UI elements
 
-```bash
-ng serve
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/lumab23/pokedex.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd pokedex
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Run the application:
+   ```sh
+   ng serve
+   ```
+5. Open the application in your browser:
+   ```
+   http://localhost:4200
+   ```
+
+## Screenshots
+![UI Preview](public/ui.png)
+
+## Project Structure
+```
+/ src
+  / app
+    / components
+      / card  --> Pokémon card component
+      / list  --> Pokémon list component
+      / search  --> Pokémon search component (credit: Uiverse.io by 0xnihilism)
+      / header  --> Header with Pokémon logo
+    / pages
+      / home  --> Main homepage component
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## API Usage
+This project fetches Pokémon data from the [PokéAPI](https://pokeapi.co/).
+- List of Pokémon: `https://pokeapi.co/api/v2/pokemon?offset={offset}&limit={limit}`
+- Pokémon details: `https://pokeapi.co/api/v2/pokemon/{name}`
 
-## Code scaffolding
+## Credits
+- **Uiverse.io (0xnihilism)** for the search input design ([Design Link](https://uiverse.io/0xnihilism/calm-baboon-55)).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

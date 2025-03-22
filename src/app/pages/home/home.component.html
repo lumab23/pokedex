@@ -1,3 +1,3 @@
 <app-header></app-header>
-<app-search></app-search>
-<app-list></app-list>
+<app-search (cardShown)="onCardShown($event)" (searchCleared)="onSearchCleared()"></app-search>
+<app-list [isVisible]="isListVisible"></app-list>

@@ -1,19 +1,23 @@
-<div class="pokemon-list">
-  <app-card
-    *ngFor="let pokemon of pokemons"
-    [id]="pokemon.id"
-    [name]="pokemon.name"
-    [sprite]="pokemon.sprite"
-    [hp]="pokemon.hp"
-    [type]="pokemon.type"
-    [abilities]="pokemon.abilities"
-    [moves]="pokemon.moves"
-  ></app-card>
-</div>
+@if (isVisible) {
+  <div class="pokemon-list">
+    <app-card
+      *ngFor="let pokemon of pokemons"
+      [id]="pokemon.id"
+      [name]="pokemon.name"
+      [sprite]="pokemon.sprite"
+      [hp]="pokemon.hp"
+      [type]="pokemon.type"
+      [abilities]="pokemon.abilities"
+      [moves]="pokemon.moves"
+    ></app-card>
+  </div>
+}
   
-<div class="pagination">
-  <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️</button>
-  <span> {{ currentPage }}</span>
-  <button (click)="nextPage()" [disabled]="currentPage * perPage >= totalPokemons">➡️</button>
-</div>
+@if (isVisible) {
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️</button>
+    <span> {{ currentPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage * perPage >= totalPokemons">➡️</button>
+  </div>
+}
   

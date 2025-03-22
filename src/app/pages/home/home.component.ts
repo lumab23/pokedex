@@ -10,5 +10,14 @@ import { ListComponent } from '../../components/list/list.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  isListVisible = true;
+
+  onCardShown(isCardShown: boolean) {
+    this.isListVisible = !isCardShown;
+  }
+
+  onSearchCleared() {
+    this.isListVisible = true;
+  }
 
 }

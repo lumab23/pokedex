@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +12,9 @@ import { CommonModule } from '@angular/common';
 })
 export class ListComponent {
 
+  @Input() isVisible = true;
   private http = inject(HttpClient);
+
 
   pokemons: any[] = [];
   currentPage = 1;
@@ -23,6 +25,12 @@ export class ListComponent {
 
   ngOnInit() {
     this.fetchPokemons();
+  }
+
+  ngOnChange(change: SimpleChanges) {
+    if (change['isVisible'] && this.isVisible) {
+      this.fetchPokemons();
+    }
   }
 
   fetchPokemons() {

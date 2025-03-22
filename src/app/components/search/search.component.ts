@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,6 +16,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent {
 
+  @Output() cardShown = new EventEmitter<boolean>();
+  @Output() searchCleared = new EventEmitter<void>();
+
   private http = inject(HttpClient);
 
   showCard = false;
@@ -32,11 +35,20 @@ export class SearchComponent {
     name: new FormControl('', Validators.required),
   });
 
+  ngOnInit() {
+    this.searchForm.get('name')?.valueChanges.subscribe((value) => {
+      if (!value) {
+        this.onClear();
+      }
+    })
+  }
+
   onSubmit() {
     const name = this.searchForm.value.name?.toLowerCase();
 
     if (name) {
       this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`).subscribe({
+
         next: (result: any) => {
           this.errorMessage = "";
           
@@ -54,13 +66,12 @@ export class SearchComponent {
           .slice(0, 5)
           .map((move: any) => move.move.name);
 
-          // mostrar o card apenas após o carregamento dos dados 
-          setTimeout(() => {
-            this.showCard = true;
-          }, 100)
+          this.showCard = true;
+          this.cardShown.emit(true);
         },
         error: (err) => {
           this.showCard = false;
+          this.cardShown.emit(false);
           this.errorMessage = "Pokemon não foi encontrado!";
           console.log("Error fetching Pokémon: ", err)
         }
@@ -68,6 +79,14 @@ export class SearchComponent {
     }
   }
 
+  onClear() {
+    this.searchForm.reset();
+    this.showCard = false;
+    this.cardShown.emit(false);
+    this.searchCleared.emit();
+  }
+
 }
+
 
 
